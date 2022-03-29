@@ -23,4 +23,4 @@ jobs:
     steps:
       - name: print test message
         run: |
-          echo "This is a test message from dre"
+          echo "This is a test message from dredel"
