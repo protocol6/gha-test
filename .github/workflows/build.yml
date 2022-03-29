@@ -21,6 +21,16 @@ jobs:
     name: Check if Build should be done
     runs-on: ubuntu-latest
     steps:
+      - name: Supress builds for PRs from branch github-action-*
+        if: github.event.pull_request && contains(github.head_ref, 'github-action')
+        run: |
+          echo "not building PRs with source branch github-action-*"
+          exit 1
+  setup:
+    name: Setup to do something
+    needs: check_build_safety
+    runs-on: ubuntu-latest
+    steps:
       - name: print test message
         run: |
-          echo "This is a test message from dredel"
+          echo "This is a build message from dredel"
