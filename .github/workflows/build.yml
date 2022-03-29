@@ -1,0 +1,26 @@
+name: Build and Test
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - labeled
+    branches-ignore:
+      - github-action-* #to allow testing of build logic in branches, don't do PR builds for github-action-* branches and instead use branch builds
+
+  push:
+    branches:
+      - master
+      - main
+      - github-action-*
+
+jobs:
+  check_build_safety:
+    name: Check if Build should be done
+    runs-on: ubuntu-latest
+    steps:
+      - name: print test message
+        run: |
+          echo "This is a test message from dre"
