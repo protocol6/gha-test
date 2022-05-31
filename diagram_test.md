@@ -10,6 +10,18 @@ graph TD;
 ```
 
 ```mermaid
+stateDiagram-v2
+ [*] --> New
+ New --> Ready: admitted
+ Ready --> Running: scheduler dispatch
+ Running --> Ready: interrupt
+ Running --> Waiting: I/O or event wait
+ Waiting --> Ready: I/O or event completion
+ Running --> Terminated: exit
+ Terminated --> [*]
+```
+
+```mermaid
 flowchart LR
 input1(nwo):::optional-->action(Action to Mermaid):::action
 input2(token):::optional-->action(Action to Mermaid):::action
