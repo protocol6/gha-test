@@ -19,3 +19,16 @@ classDef optional fill:#d9b430,stroke:#333,stroke-width:3px
 classDef action fill:blue,stroke:#333,stroke-width:3px,color:#ffffff
 classDef output fill:#fff,stroke:#333,stroke-width:3px,color:#333
 ```
+
+```mermaid
+sequenceDiagram
+    participant dotcom
+    participant iframe
+    participant viewscreen
+    dotcom->>iframe: loads html w/ iframe url
+    iframe->>viewscreen: request template
+    viewscreen->>iframe: html & javascript
+    iframe->>dotcom: iframe ready
+    dotcom->>iframe: set mermaid data on iframe
+    iframe->>iframe: render mermaid
+```
